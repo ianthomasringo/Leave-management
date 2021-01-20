@@ -20,6 +20,15 @@ namespace leave_management
 {
     public class Startup
     {
+        /*
+        This is the startup for project leave management.
+        
+        Version History
+        ------- -------
+        Ver
+        v11     20-11-2021  Ian Thomas      End of chapter 11   
+        */
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
