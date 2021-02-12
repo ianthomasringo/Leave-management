@@ -6,6 +6,21 @@
     <RootNamespace>leave_management</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20191231214944_AddedEmployeeDataPoints.cs" />
+    <Compile Remove="Data\Migrations\20191231214944_AddedEmployeeDataPoints.Designer.cs" />
+    <Compile Remove="Data\Migrations\20191231220817_AddedLeaveDetailsTables.cs" />
+    <Compile Remove="Data\Migrations\20191231220817_AddedLeaveDetailsTables.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210208093343_AddedDefaultDaysAndPeriod.cs" />
+    <Compile Remove="Data\Migrations\20210208093343_AddedDefaultDaysAndPeriod.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210208165249_chapter27AddFields.cs" />
+    <Compile Remove="Data\Migrations\20210208165249_chapter27AddFields.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210208170048_20210208-Chapter27.cs" />
+    <Compile Remove="Data\Migrations\20210208170048_20210208-Chapter27.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210208170302_20210208-Chapter27.cs" />
+    <Compile Remove="Data\Migrations\20210208170302_20210208-Chapter27.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
