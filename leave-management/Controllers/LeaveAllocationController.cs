@@ -19,13 +19,13 @@ namespace leave_management.Controllers
         private readonly ILeaveTypeRepository _leaverepo;
         private readonly ILeaveAllocationRepository _leaveallocationrepo;
         private readonly IMapper _mapper;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<Employee> _userManager;
 
         public LeaveAllocationController(
             ILeaveTypeRepository leaverepo,
             ILeaveAllocationRepository leaveallocationrepo,
             IMapper mapper,
-            UserManager<IdentityUser> userManager
+            UserManager<Employee> userManager
         )
         {
             _leaverepo = leaverepo;
@@ -70,10 +70,24 @@ namespace leave_management.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: LeaveAllocationController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult ListEmployees()
         {
-            return View();
+            var employees = _userManager.GetUsersInRoleAsync("Employee").Result;
+            var model = _mapper.Map<List<EmployeeVM>>(employees);
+            return View(model);
+        }
+
+        // GET: LeaveAllocationController/Details/5
+        public ActionResult Details(string id)
+        {
+            var employee = _mapper.Map<EmployeeVM>(_userManager.FindByIdAsync(id).Result);
+            var allocations = _mapper.Map<List<LeaveAllocationVM>>(_leaveallocationrepo.GetLeaveAllocationsByEmployee(id));
+            var model = new ViewAllocationsVM
+            {
+                Employee = employee,
+                LeaveAllocations = allocations
+            };
+            return View(model);
         }
 
         // GET: LeaveAllocationController/Create
@@ -100,7 +114,9 @@ namespace leave_management.Controllers
         // GET: LeaveAllocationController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var leaveallocation = _leaveallocationrepo.FindById(id);
+            var model = _mapper.Map<LeaveAllocationVM>(leaveallocation);
+            return View(model);
         }
 
         // POST: LeaveAllocationController/Edit/5
