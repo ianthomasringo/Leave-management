@@ -32,6 +32,16 @@ namespace leave_management.Models
         public List<LeaveTypeVM> LeaveTypes { get; set; }
     }
 
+    public class EditLeaveAllocationVM
+    {
+        public int Id { get; set; }
+        public EmployeeVM Employee { get; set; }
+        public string EmployeeId { get; set; }
+        [Display(Name = "Number of days")]
+        public int NumberOfDays { get; set; }
+        public LeaveTypeVM LeaveType { get; set; }
+    }
+
     public class ViewAllocationsVM
     {
         public EmployeeVM Employee { get; set; }
