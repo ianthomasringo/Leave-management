@@ -19,6 +19,7 @@
     <Compile Remove="Data\Migrations\20210208170048_20210208-Chapter27.Designer.cs" />
     <Compile Remove="Data\Migrations\20210208170302_20210208-Chapter27.cs" />
     <Compile Remove="Data\Migrations\20210208170302_20210208-Chapter27.Designer.cs" />
+    <Compile Remove="globalTest.cs" />
   </ItemGroup>
 
 
