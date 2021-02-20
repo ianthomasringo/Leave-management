@@ -1,8 +1,19 @@
-﻿@model IEnumerable<leave_management.Models.LeaveRequestVM>
+﻿@model leave_management.Models.ViewRequestsAndAllocationsVM
 
 @{
     ViewData["Title"] = "MyLeave";
 }
+
+<h1>My Leave Allocations</h1>
+
+<div class="jumbotron" role="alert">
+    @foreach (var item in Model.LeaveAllocations)
+    {
+        <li class="list-group-item">
+            <h6>@item.LeaveType.Name <span class="badge badge-secondary">@item.NumberOfDays</span></h6>
+        </li>
+    }
+</div>
 
 <h1>My Leave records</h1>
 
@@ -13,55 +24,63 @@
                 Leave Type
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StartDate)
+                Start Date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EndDate)
+                End date
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateRequested)
+                Date Requested
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Approved)
+                Approved
             </th>
-            <th></th>
+            <th>Cancel Request</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeaveType.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateRequested)
-            </td>
-            <td>
-                @if (item.Approved == true)
-                {
-                    <span class="badge badge-success">Approved</span>
-                }
-                else if (item.Approved == false)
-                {
-                    <span class="badge badge-danger">Rejected</span>
-                }
-                else
-                {
-                    <span class="badge badge-warning">Pending Approval</span>
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.LeaveRequests)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LeaveType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateRequested)
+                </td>
+                <td>
+                    @if (item.Cancelled == true)
+                    {
+                        <span class="badge badge-dark">Cancelled</span>
+                    }
+                    else if (item.Approved == true)
+                    {
+                        <span class="badge badge-success">Approved</span>
+                    }
+                    else if (item.Approved == false)
+                    {
+                        <span class="badge badge-danger">Rejected</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-warning">Pending Approval</span>
+                    }
+                </td>
+                <td>
+                    @if (item.StartDate > DateTime.Now && item.Approved==true && item.Cancelled!=true)
+                    {
+                        <a asp-action="CancelRequest" class="btn btn-danger" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to cancel this leave?')">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -19,6 +19,16 @@
     <Compile Remove="Data\Migrations\20210208170048_20210208-Chapter27.Designer.cs" />
     <Compile Remove="Data\Migrations\20210208170302_20210208-Chapter27.cs" />
     <Compile Remove="Data\Migrations\20210208170302_20210208-Chapter27.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210219172725_Test Class Structure 002.cs" />
+    <Compile Remove="Data\Migrations\20210219172725_Test Class Structure 002.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210219172939_Test Class Structure 002.cs" />
+    <Compile Remove="Data\Migrations\20210219172939_Test Class Structure 002.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210219173231_Test Class Structure 002.cs" />
+    <Compile Remove="Data\Migrations\20210219173231_Test Class Structure 002.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210219173638_Test Class Structure 002.cs" />
+    <Compile Remove="Data\Migrations\20210219173638_Test Class Structure 002.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210219183147_Test Class Structure 003.cs" />
+    <Compile Remove="Data\Migrations\20210219183147_Test Class Structure 003.Designer.cs" />
     <Compile Remove="globalTest.cs" />
   </ItemGroup>
 

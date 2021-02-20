@@ -29,6 +29,9 @@ namespace leave_management.Models
         public bool? Approved { get; set; }
         public EmployeeVM ApprovedBy { get; set; }
         public string ApprovedById { get; set; }
+        public bool? Cancelled { get; set; }
+        public DateTime CancelledDate { get; set; }
+        public string Comments { get; set; }
     }
 
     public class AdminLeaveRequestViewVM
@@ -55,5 +58,12 @@ namespace leave_management.Models
         public IEnumerable<SelectListItem> LeaveTypes { get; set; }
         [Display(Name = "Leave Type")]
             public int LeaveTypeId { get; set; }
+        public string Comments { get; set; }
+    }
+    public class ViewRequestsAndAllocationsVM
+    {
+        public List<LeaveRequestVM> LeaveRequests { get; set; }
+        public string EmployeeId { get; set; }
+        public List<LeaveAllocationVM> LeaveAllocations { get; set; }
     }
 }
